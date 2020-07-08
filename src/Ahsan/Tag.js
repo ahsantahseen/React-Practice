@@ -1,18 +1,15 @@
 import React from "react";
-import "./Tag.css";
+import classes from "./Tag.module.css";
 
 const Tag = (props) => {
-  const style = {
-    "@media(min-width:500px)": { width: "480px" },
-  };
   return (
-    <div className="card" style={style}>
+    <div  className={classes.card}>
       <h3 onClick={props.click}>
         {props.name} is {props.yrs} years old company
         {""}
       </h3>
       <p>{props.children}</p>
-      <input onChange={props.change}></input>
+      <input onChange={(event) => props.change(event, props.id)}></input>
     </div>
   );
 };

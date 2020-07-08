@@ -3,7 +3,6 @@ import classes from "./App.module.css";
 import "./Ahsan/Ahsan";
 
 import Tag from "./Ahsan/Tag";
-import "./Ahsan/Tag.css";
 
 class App extends Component {
   state = {
@@ -15,17 +14,12 @@ class App extends Component {
     showCompanies: false,
   };
   nameChanger = (event, key) => {
-    const CompaniesIndex = this.state.Companies.findIndex((p) => {
-      return (p.key = key);
-    });
-
-    const Companies = { ...this.state.Companies[CompaniesIndex] };
-
-    Companies.name = event.target.value;
-
-    const Company = [...this.state.Companies];
-    Company[CompaniesIndex] = Companies;
-    this.setState({ Companies: Company });
+    let oldState = [...this.state.Companies];
+    const newName = event.target.value;
+    const index = oldState.findIndex((elem) => elem.key === key);
+    oldState[index].name = newName;
+    console.log(oldState);
+    this.setState({ Companies: oldState });
   };
   handlerfunc = () => {
     const doesShow = this.state.showCompanies;
@@ -42,14 +36,15 @@ class App extends Component {
     if (this.state.showCompanies) {
       company = (
         <div>
-          {this.state.Companies.map((Companies, CompanyIndex) => {
+          {this.state.Companies.map((Company, CompanyIndex) => {
             return (
               <Tag
                 click={() => this.deleteCompaniesHandler(CompanyIndex)}
-                name={Companies.name}
-                yrs={Companies.yrs}
-                key={Companies.key}
-                change={(event) => this.nameChanger(event, Companies.key)}
+                name={Company.name}
+                yrs={Company.yrs}
+                key={Company.key}
+                id={Company.key}
+                change={this.nameChanger}
               ></Tag>
             );
           })}
