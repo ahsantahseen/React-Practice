@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import classes from "./App.module.css";
-import "./Ahsan/Ahsan";
+import "../components/Ahsan/Ahsan";
 
-import Tag from "./Ahsan/Tag";
+import Tag from "../components/Ahsan/Tag";
 
 class App extends Component {
   state = {
