@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import classes from "./App.module.css";
-import "../components/Ahsan/Ahsan";
+import classes from "../containers/App.module.css";
+import "../components/AhsanComponents/Ahsan/Ahsan";
 
-import Tag from "../components/Ahsan/Tag";
+import Tag from "../components/AhsanComponents/Ahsan/Tag";
 
 class App extends Component {
   state = {
@@ -36,18 +36,11 @@ class App extends Component {
     if (this.state.showCompanies) {
       company = (
         <div>
-          {this.state.Companies.map((Company, CompanyIndex) => {
-            return (
-              <Tag
-                click={() => this.deleteCompaniesHandler(CompanyIndex)}
-                name={Company.name}
-                yrs={Company.yrs}
-                key={Company.key}
-                id={Company.key}
-                change={this.nameChanger}
-              ></Tag>
-            );
-          })}
+          <Tag
+            clicked={this.deleteCompaniesHandler}
+            Companies={this.state.Companies}
+            changed={this.nameChanger}
+          />
         </div>
       );
 

@@ -3,7 +3,7 @@ import classes from "./Tag.module.css";
 
 const Tag = (props) => {
   return (
-    <div  className={classes.card}>
+    <div className={classes.card}>
       <h3 onClick={props.click}>
         {props.name} is {props.yrs} years old company
         {""}
