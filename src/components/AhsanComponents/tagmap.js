@@ -1,7 +1,7 @@
 import React from "react";
-import Tag from "./AhsanComponents/Ahsan";
+import Tag from "./Ahsan/Tag";
 
-const tagmap = (props) =>
+const Tagmap = (props) =>
   props.Companies.map((Company, CompanyIndex) => {
     return (
       <Tag
@@ -10,8 +10,9 @@ const tagmap = (props) =>
         yrs={Company.yrs}
         key={Company.key}
         id={Company.key}
-        change={(event) => props.changed(event, CompanyIndex)}
+        change={props.changed}
       ></Tag>
     );
   });
-export default tagmap;
+
+export default Tagmap;

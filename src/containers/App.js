@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import classes from "../containers/App.module.css";
-import "../components/AhsanComponents/Ahsan/Ahsan";
-
-import Tag from "../components/AhsanComponents/Ahsan/Tag";
+import Tagmap from "../components/AhsanComponents/tagmap";
 
 class App extends Component {
   state = {
@@ -36,7 +34,7 @@ class App extends Component {
     if (this.state.showCompanies) {
       company = (
         <div>
-          <Tag
+          <Tagmap
             clicked={this.deleteCompaniesHandler}
             Companies={this.state.Companies}
             changed={this.nameChanger}
