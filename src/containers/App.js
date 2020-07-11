@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import classes from "../containers/App.module.css";
 import Tagmap from "../components/AhsanComponents/tagmap";
+import Cockpit from "../components/cockpit/cockpit";
 
 class App extends Component {
   state = {
@@ -29,7 +30,6 @@ class App extends Component {
     this.setState({ Companies: companies });
   };
   render() {
-    let BtnClass = [classes.Button];
     let company = null;
     if (this.state.showCompanies) {
       company = (
@@ -41,28 +41,15 @@ class App extends Component {
           />
         </div>
       );
+    }
 
-      BtnClass.push(classes.Red);
-    }
-    const assignedClass = [];
-    if (this.state.Companies.length <= 2) {
-      assignedClass.push(classes.style1);
-    }
-    if (this.state.Companies.length <= 1) {
-      assignedClass.push(classes.style2);
-    }
-    if (this.state.Companies.length === 0) {
-      assignedClass.push(classes.style3);
-    }
     return (
       <div className={classes.App}>
-        <h1>Hello This is a react app</h1>
-        <p className={assignedClass.join(" ")}>
-          Hello! I'm Ahsan and i made this custom component
-        </p>
-        <button className={BtnClass.join(" ")} onClick={this.handlerfunc}>
-          Click Me!
-        </button>
+        <Cockpit
+          hfunc={this.handlerfunc}
+          Companies={this.state.Companies}
+          showHanlder={this.state.showCompanies}
+        ></Cockpit>
         {company}
       </div>
     );
