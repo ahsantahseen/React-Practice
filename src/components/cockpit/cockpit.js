@@ -5,8 +5,11 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log("[COCKPIT.JS] useEffect");
     //HTTP REQUESTS
-  });
-
+    setTimeout(() => {
+      alert("Data Parsed to Cloud!");
+    }, 1000);
+  }, [props.Companies]);
+  //As now we have controlled the useEffect usage and it will only alert when Companies is updated
   const assignedClass = [];
 
   let BtnClass = [classes.Button];
