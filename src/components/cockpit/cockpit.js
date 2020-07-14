@@ -8,8 +8,10 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert("Data Parsed to Cloud!");
     }, 1000);
-  }, [props.Companies]);
+  }, []);
   //As now we have controlled the useEffect usage and it will only alert when Companies is updated
+  // Now if i dont want to re run the useEffect i will just pass an empty array which will do that it will
+  //only run once and there will be no dependencies on it so there wont be any other conditions for it to re run
   const assignedClass = [];
 
   let BtnClass = [classes.Button];

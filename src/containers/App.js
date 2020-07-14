@@ -11,6 +11,7 @@ class App extends Component {
       { key: "asd13", name: "Bykea", yrs: 14 },
     ],
     showCompanies: false,
+    showCockpit: true,
   };
   nameChanger = (event, key) => {
     let oldState = [...this.state.Companies];
@@ -45,11 +46,20 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit
-          hfunc={this.handlerfunc}
-          Companies={this.state.Companies}
-          showHanlder={this.state.showCompanies}
-        ></Cockpit>
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            hfunc={this.handlerfunc}
+            Companies={this.state.Companies}
+            showHanlder={this.state.showCompanies}
+          ></Cockpit>
+        ) : null}
         {company}
       </div>
     );
