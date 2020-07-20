@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./cockpit.module.css";
 
 const Cockpit = (props) => {
+  const btnRef = useRef(null);
+
   useEffect(() => {
     console.log("[COCKPIT.JS] useEffect");
     //HTTP REQUESTS
     setTimeout(() => {
       alert("Data Parsed to Cloud!");
     }, 1000);
+    btnRef.current.click();
   }, []);
   //As now we have controlled the useEffect usage and it will only alert when Companies is updated
   // Now if i dont want to re run the useEffect i will just pass an empty array which will do that it will
@@ -34,7 +37,7 @@ const Cockpit = (props) => {
       <p className={assignedClass.join(" ")}>
         Hello! I'm Ahsan and i made this custom component
       </p>
-      <button className={BtnClass.join(" ")} onClick={props.hfunc}>
+      <button ref={btnRef} className={BtnClass.join(" ")} onClick={props.hfunc}>
         Click Me!
       </button>
     </div>

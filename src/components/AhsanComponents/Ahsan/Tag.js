@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Tag.module.css";
 import PropTypes from "prop-types";
 
 const Tag = (props) => {
+  const inputSelRef = useRef(null);
+  useEffect(() => {
+    console.log("USE EFFECT [TAG.JS]");
+    inputSelRef.current.focus();
+  });
+
   return (
     <div className={classes.card}>
       <h3 onClick={props.click}>
@@ -10,7 +16,10 @@ const Tag = (props) => {
         {""}
       </h3>
       <p>{props.children}</p>
-      <input onChange={(event) => props.change(event, props.id)}></input>
+      <input
+        ref={inputSelRef}
+        onChange={(event) => props.change(event, props.id)}
+      ></input>
     </div>
   );
 };
@@ -19,5 +28,5 @@ const Tag = (props) => {
 //   name: PropTypes.string,
 //   yrs: PropTypes.number,
 //   change: PropTypes.func,
-// };
+// };//for class based only
 export default Tag;
