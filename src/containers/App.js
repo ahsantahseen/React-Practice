@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classes from "../containers/App.module.css";
 import Tagmap from "../components/AhsanComponents/tagmap";
 import Cockpit from "../components/cockpit/cockpit";
+import WithClass from "../components/hoc/withClass";
 
 class App extends Component {
   state = {
@@ -45,7 +46,7 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -61,7 +62,7 @@ class App extends Component {
           ></Cockpit>
         ) : null}
         {company}
-      </div>
+      </WithClass>
     );
   }
 }
