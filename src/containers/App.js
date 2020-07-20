@@ -13,6 +13,7 @@ class App extends Component {
     ],
     showCompanies: false,
     showCockpit: true,
+    changeCounter: 0,
   };
   nameChanger = (event, key) => {
     let oldState = [...this.state.Companies];
@@ -20,7 +21,13 @@ class App extends Component {
     const index = oldState.findIndex((elem) => elem.key === key);
     oldState[index].name = newName;
     console.log(oldState);
-    this.setState({ Companies: oldState });
+    this.setState((prevState, props) => {
+      return {
+        Companies: oldState,
+        changeCounter: prevState.changeCounter + 1,
+      };
+    });
+    console.log(this.state.changeCounter);
   };
   handlerfunc = () => {
     const doesShow = this.state.showCompanies;
