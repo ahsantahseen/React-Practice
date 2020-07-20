@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Tag.module.css";
+import PropTypes from "prop-types";
 
 const Tag = (props) => {
   return (
@@ -13,5 +14,10 @@ const Tag = (props) => {
     </div>
   );
 };
-
+// Tag.PropTypes = {
+//   click: PropTypes.func,
+//   name: PropTypes.string,
+//   yrs: PropTypes.number,
+//   change: PropTypes.func,
+// };
 export default Tag;
